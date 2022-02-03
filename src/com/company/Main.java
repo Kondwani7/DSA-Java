@@ -44,9 +44,28 @@ public class Main {
     }
     //insert into the first element of the linked list
     public  void insertFirst(int value){
+        //initialize a new node with a value
         ListNode newNode = new ListNode(value);
         newNode.next = head;
         head = newNode;
+    }
+    //insert at end of list
+    public void insertLast(int value) {
+        ListNode newNode = new ListNode(value);
+        //the head's pointer is null, it has no elements
+        //therefore the newNode can become the last element
+        if(head == null) {
+            head = newNode;
+            return;
+        }
+        //when the linked list has elements
+        ListNode current = head;
+        //travese through each element until we get to the node
+        while(null!=current.next){
+            current = current.next;
+        }
+        //this makes the last node our new node
+        current.next = newNode;
     }
 
 
@@ -65,6 +84,9 @@ public class Main {
         four.next = five;//1-->11-->22-->33-->44
         //insert into the head of the linked list
         l1.insertFirst(0);
+        l1.insertFirst(0);
+        //insert at the end of linked list
+        l1.insertLast(55);
         //print linked list
         l1.display();
         //get list length
