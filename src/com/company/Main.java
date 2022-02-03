@@ -60,7 +60,7 @@ public class Main {
         }
         //when the linked list has elements
         ListNode current = head;
-        //travese through each element until we get to the node
+        //traverse through each element until we get to the node
         while(null!=current.next){
             current = current.next;
         }
@@ -68,6 +68,36 @@ public class Main {
         current.next = newNode;
     }
 
+    public void insertTarget(int position, int value){
+        ListNode targetNode = new ListNode(value);
+        //if the linked list only has the head the target posiition is 1
+        if(position ==1){
+            //the head points at the targetNode
+            targetNode.next = head;
+            //head --> targetNode
+            head = targetNode;
+        } else {
+            //the node just before our target node position
+            //we initially assign it as a head so that we can traverse through the linked list
+            //till we find the position just before the target node to prep for insertion
+            ListNode previousNode = head;
+            int count = 1;
+            //traversal until we are 1 position behind the target position
+            while(count < position -1){
+                //asign it a pointer once found
+                previousNode = previousNode.next;
+                count++;
+            }
+            //the node in the current position we want our target node to occupy
+            // previousNode --> currentNode
+            ListNode currentNode = previousNode.next;
+            // targetNode --> currentNode
+            targetNode.next = currentNode;
+            //previousNode --> targetNode --> currentNode
+            previousNode.next = targetNode;
+
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -84,9 +114,10 @@ public class Main {
         four.next = five;//1-->11-->22-->33-->44
         //insert into the head of the linked list
         l1.insertFirst(0);
-        l1.insertFirst(0);
         //insert at the end of linked list
-        l1.insertLast(55);
+        l1.insertLast(66);
+        //insert at position 7
+        l1.insertTarget(7, 55);
         //print linked list
         l1.display();
         //get list length
