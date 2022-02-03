@@ -3,7 +3,7 @@ package com.company;
 import java.util.List;
 
 public class Main {
-        //begining of the list
+        //beginning of the list
         private ListNode head;
         //first node
         private static class ListNode {
@@ -16,7 +16,15 @@ public class Main {
                 this.next = null;
             }
         }
-        //display linkedlist
+        //display linked List
+        public void display(){
+            ListNode current = head;
+            while(current != null) {
+                System.out.println(current.data + "--> ");
+                current = current.next;
+            }
+            System.out.println("null");
+        }
 
 
 
@@ -32,5 +40,7 @@ public class Main {
         second.next =  third;//1-->11-->22
         third.next = four;//1-->11-->22-->33
         four.next = five;//1-->11-->22-->33-->44
+        //print linked list
+        l1.display();
     }
 }
