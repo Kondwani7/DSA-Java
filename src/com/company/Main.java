@@ -1,6 +1,5 @@
 package com.company;
 
-import java.util.List;
 
 public class Main {
     //beginning of the list
@@ -43,6 +42,13 @@ public class Main {
         }
         return count;
     }
+    //insert into the first element of the linked list
+    public  void insertFirst(int value){
+        ListNode newNode = new ListNode(value);
+        newNode.next = head;
+        head = newNode;
+    }
+
 
 
     public static void main(String[] args) {
@@ -57,8 +63,10 @@ public class Main {
         second.next =  third;//1-->11-->22
         third.next = four;//1-->11-->22-->33
         four.next = five;//1-->11-->22-->33-->44
+        //insert into the head of the linked list
+        l1.insertFirst(0);
         //print linked list
-        //l1.display();
+        l1.display();
         //get list length
         System.out.println("Length of linked list:"+ l1.listLength());
     }
