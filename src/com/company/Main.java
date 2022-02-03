@@ -4,11 +4,11 @@ package com.company;
 public class Main {
     //beginning of the list
     private ListNode head;
-    //first node
+    //first node / constructor
     private static class ListNode {
-        private int data;
+        final int data;
         private ListNode next;
-        //data -> integer, pointer -> next
+        //data = integer, pointer = next
         public ListNode(int data) {
             this.data = data;
             // the last node points to null
@@ -98,11 +98,26 @@ public class Main {
 
         }
     }
+    //delete the first node/ head
+    public ListNode deleteFirst(){
+        if(head == null){
+            return null;
+        }
+        //assigning tempNode to the head/firstNode
+        ListNode tempNode = head;
+        //traverse to the second node and make it the head
+        //tempNode --> head
+        head = head.next;
+        //delete the tempNode by assigning it to null
+        tempNode.next = null;
+        return  tempNode;
+    }
+    //delete last node from linked List
 
 
     public static void main(String[] args) {
         Main l1 = new Main();
-        l1.head = new ListNode(1);
+        l1.head = new ListNode(2);
         ListNode second = new ListNode(11);
         ListNode third = new ListNode(22);
         ListNode four = new ListNode(33);
@@ -113,14 +128,19 @@ public class Main {
         third.next = four;//1-->11-->22-->33
         four.next = five;//1-->11-->22-->33-->44
         //insert into the head of the linked list
-        l1.insertFirst(0);
+        l1.insertFirst(1);
         //insert at the end of linked list
-        l1.insertLast(66);
+        l1.insertLast(77);
         //insert at position 7
         l1.insertTarget(7, 55);
+        //insert at position 8
+        l1.insertTarget(8, 66);
         //print linked list
         l1.display();
         //get list length
         System.out.println("Length of linked list:"+ l1.listLength());
+        //delete first node and check data
+        System.out.println("data deleted from Node:" + l1.deleteFirst().data);
+        l1.display();
     }
 }
