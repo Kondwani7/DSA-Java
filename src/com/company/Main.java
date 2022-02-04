@@ -164,6 +164,15 @@ public class Main {
         }
         return  prevNode;
     }
+    //find the middle node in a linked list
+    public ListNode middleNode(){
+        ListNode slowPtr = head;
+        ListNode fastPtr = head;
+        while(fastPtr != null  && fastPtr.next != null){
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+        } return slowPtr;
+    }
 
 
     public static void main(String[] args) {
@@ -223,11 +232,14 @@ public class Main {
             }
         }
 
+
         //check if the element is present in the linked list
         if(ans == -1){
             System.out.println("Element not in linked list");
         } else {
             System.out.println("Element in linked list:" + ans);
         }
+        //middle node
+        System.out.println("The middle node of the linked list:"+ l1.middleNode().data);
     }
 }
