@@ -222,6 +222,7 @@ public class Main {
                 break;
             }
         }
+
         //check if the element is present in the linked list
         if(ans == -1){
             System.out.println("Element not in linked list");
