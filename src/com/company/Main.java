@@ -1,9 +1,10 @@
 package com.company;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
     //beginning of the list
-    private ListNode head;
+    private static ListNode head;
     //first node / constructor
     private static class ListNode {
         final int data;
@@ -28,7 +29,6 @@ public class Main {
         System.out.println("null");
     }
     //get the count of the linked list
-
     public int listLength(){
         //if the list has no nodes
         if (head == null) {
@@ -148,7 +148,22 @@ public class Main {
         previousNode.next = currentNode.next;
         return currentNode;
     }
-
+    //reverse a linked list
+    public ListNode reverseLL(){
+        if(head == null){
+            return null;
+        }
+        ListNode prevNode = null;
+        ListNode currentNode = head;
+        ListNode nextNode = null;
+        while(currentNode != null){
+            nextNode = currentNode.next;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+        return  prevNode;
+    }
 
 
     public static void main(String[] args) {
