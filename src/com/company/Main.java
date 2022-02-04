@@ -1,5 +1,4 @@
 package com.company;
-import java.awt.*;
 import java.util.LinkedList;
 
 public class Main {
@@ -209,6 +208,21 @@ public class Main {
             }
         } return currentNode;
     }
+    //insert node inspect position when the linked list is sorted
+    public ListNode insertTargetSorted(int value){
+        ListNode targetNode = new ListNode(value);
+        ListNode tempNode = null;
+        ListNode currentNode = head;
+        while(currentNode != null && currentNode.data < targetNode.data){
+            //temp refers to current node and becoems the head
+            tempNode = currentNode;
+            //traverse through the linked list until we find a current node bigger than the targetNode data
+            currentNode = currentNode.next;
+        }
+        targetNode.next = currentNode;
+        tempNode.next = targetNode;
+        return head;
+    }
 
     public static void main(String[] args) {
         Main l1 = new Main();
@@ -282,6 +296,9 @@ public class Main {
         //delete duplicates from linked list
         l1.delDuplicate();
         System.out.println("Linked lIst with duplicates deleted:");
+        l1.display();
+        //insert at a target node in a sorted link list
+        l1.insertTargetSorted(55);
         l1.display();
     }
 }
