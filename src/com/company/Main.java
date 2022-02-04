@@ -1,6 +1,6 @@
 package com.company;
+import java.awt.*;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Main {
     //beginning of the list
@@ -173,7 +173,26 @@ public class Main {
             fastPtr = fastPtr.next.next;
         } return slowPtr;
     }
-
+    //find the nth node from the end of the linked list
+    public ListNode nthFromEnd(int n){
+        if (head == null ){
+            return null;
+        }
+        if( n<=0){
+            throw new IllegalArgumentException("Invalid value: n="+ n);
+        }
+        ListNode mainPtr = head;
+        ListNode refPtr = head;
+        int count = 0;
+        while (count < n){
+            refPtr = refPtr.next;
+            count++;
+        }
+        while(refPtr != null){
+            mainPtr = mainPtr.next;
+            refPtr = refPtr.next;
+        } return mainPtr;
+    }
 
     public static void main(String[] args) {
         Main l1 = new Main();
@@ -182,7 +201,6 @@ public class Main {
         ListNode third = new ListNode(22);
         ListNode four = new ListNode(33);
         ListNode five = new ListNode(44);
-
         //connecting the nodes to create chain
         l1.head.next = second;// 1 -->11
         second.next =  third;//1-->11-->22
@@ -231,8 +249,6 @@ public class Main {
                 break;
             }
         }
-
-
         //check if the element is present in the linked list
         if(ans == -1){
             System.out.println("Element not in linked list");
@@ -241,5 +257,7 @@ public class Main {
         }
         //middle node
         System.out.println("The middle node of the linked list:"+ l1.middleNode().data);
+        //nth node from end of linked list
+        System.out.println("4th value from the end of linked list:"+l1.nthFromEnd(4).data);
     }
 }
