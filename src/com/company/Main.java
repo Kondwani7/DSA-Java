@@ -272,14 +272,16 @@ public class Main {
         //check if the element is present in the linked list
         if(ans == -1){
             System.out.println("Element not in linked list");
-        } else
+        } else {
             System.out.println("Element in linked list:" + ans);
         }
         //middle node
         System.out.println("The middle node of the linked list:"+ l1.middleNode().data);
         //nth node from end of linked list
         System.out.println("4th value from the end of linked list:"+l1.nthFromEnd(4).data);
+        //delete duplicates from linked list
         l1.delDuplicate();
+        System.out.println("Linked lIst with duplicates deleted:");
         l1.display();
     }
 }
