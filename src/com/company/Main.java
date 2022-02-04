@@ -95,7 +95,6 @@ public class Main {
             targetNode.next = currentNode;
             //previousNode --> targetNode --> currentNode
             previousNode.next = targetNode;
-
         }
     }
     //delete the first node/ head
@@ -113,6 +112,42 @@ public class Main {
         return  tempNode;
     }
     //delete last node from linked List
+    public ListNode deleteLast(){
+        if(head == null || head.next == null) {
+            return null;
+        }
+        //traverse to the last node
+        ListNode currentNode = head;
+        //that will take the place of the last node
+        ListNode previousNode = null;
+        while(null!= currentNode.next){
+            //previousNode --> currentNode;
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+        //now delete the last node
+        previousNode.next = null;
+        return currentNode;
+    }
+
+    public ListNode deleteTarget(int position){
+        if(position ==1){
+            head = head.next;
+        }
+        ListNode previousNode = head;
+        int count = 0;
+        //traversal until the node before the target
+        while(count < position - 1){
+            previousNode = previousNode.next;
+            count++;
+        }
+        //establish a pointer to the target node that we want to delete
+        ListNode currentNode = previousNode.next;
+        //by assigning the previous to the node next to the current, we delete it
+        //previousNode -- //currentNode// --> newCurrentNode
+        previousNode.next = currentNode.next;
+        return currentNode;
+    }
 
 
     public static void main(String[] args) {
@@ -138,9 +173,13 @@ public class Main {
         //print linked list
         l1.display();
         //get list length
-        System.out.println("Length of linked list:"+ l1.listLength());
+        //System.out.println("Length of linked list:"+ l1.listLength());
         //delete first node and check data
-        System.out.println("data deleted from Node:" + l1.deleteFirst().data);
+        System.out.println("data deleted from first Node:" + l1.deleteFirst().data);
+        l1.display();
+        System.out.println("data deleted from last Node:" + l1.deleteLast().data);
+        l1.display();
+        System.out.println("data removed from targetNode:" + l1.deleteTarget(3));
         l1.display();
     }
 }
