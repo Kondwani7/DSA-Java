@@ -1,5 +1,5 @@
 package com.company;
-
+import java.util.LinkedList;
 
 public class Main {
     //beginning of the list
@@ -150,6 +150,7 @@ public class Main {
     }
 
 
+
     public static void main(String[] args) {
         Main l1 = new Main();
         l1.head = new ListNode(1);
@@ -187,5 +188,30 @@ public class Main {
         l1.display();
         System.out.println("data removed from targetNode:" + l1.deleteTarget(10));
         l1.display();
+        //search if a node contains specified data
+        LinkedList<Integer> l2 = new LinkedList<>();
+        l2.add(1);
+        l2.add(2);
+        l2.add(3);
+        l2.add(4);
+        l2.add(5);
+        l2.add(6);
+        l2.add(7);
+        int targetElem = 3;
+        //initializing the answer to the index -1
+        int ans = -1;
+        for (int i =0; i < l2.size(); i++){
+            int llElem = l2.get(i);
+            if(llElem == targetElem){
+                ans = i;
+                break;
+            }
+        }
+        //check if the element is present in the linked list
+        if(ans == -1){
+            System.out.println("Element not in linked list 2");
+        } else {
+            System.out.println("Element in linked list 2:" + ans);
+        }
     }
 }
