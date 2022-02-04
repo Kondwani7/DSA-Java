@@ -193,6 +193,22 @@ public class Main {
             refPtr = refPtr.next;
         } return mainPtr;
     }
+    //deleting duplicates in a sorted linked list
+    public ListNode delDuplicate(){
+        if(head == null){
+            return  null;
+        }
+        ListNode currentNode = head;
+        while(currentNode!= null && currentNode.next != null){
+            //if the node contains the same data as the other node
+            if(currentNode.data == currentNode.next.data){
+                //jump to the next node, and effectively delete it
+                currentNode.next = currentNode.next.next;
+            }else{
+                currentNode = currentNode.next;
+            }
+        } return currentNode;
+    }
 
     public static void main(String[] args) {
         Main l1 = new Main();
@@ -200,25 +216,29 @@ public class Main {
         ListNode second = new ListNode(11);
         ListNode third = new ListNode(22);
         ListNode four = new ListNode(33);
-        ListNode five = new ListNode(44);
+        ListNode five = new ListNode(33);
+        ListNode six = new ListNode(44);
         //connecting the nodes to create chain
         l1.head.next = second;// 1 -->11
         second.next =  third;//1-->11-->22
         third.next = four;//1-->11-->22-->33
         four.next = five;//1-->11-->22-->33-->44
+        five.next = six;
         //insert into the head of the linked list
         l1.insertFirst(0);
         //insert at the end of linked list
         l1.insertLast(77);
         l1.insertLast(88);
         l1.insertLast(99);
+        l1.insertLast(99);
         l1.insertLast(110);
         l1.insertLast(121);
         l1.insertLast(132);
         //insert at position 7
-        l1.insertTarget(7, 55);
+        l1.insertTarget(8, 55);
         //insert at position 8
-        l1.insertTarget(8, 66);
+        l1.insertTarget(9, 66);
+        l1.insertTarget(10, 66);
         //print linked list
         l1.display();
         //get list length
@@ -228,7 +248,7 @@ public class Main {
         l1.display();
         System.out.println("data deleted from last Node:" + l1.deleteLast().data);
         l1.display();
-        System.out.println("data removed from targetNode:" + l1.deleteTarget(10));
+        System.out.println("data removed from targetNode:" + l1.deleteTarget(6));
         l1.display();
         //search if a node contains specified data
         LinkedList<Integer> l2 = new LinkedList<>();
@@ -252,12 +272,14 @@ public class Main {
         //check if the element is present in the linked list
         if(ans == -1){
             System.out.println("Element not in linked list");
-        } else {
+        } else
             System.out.println("Element in linked list:" + ans);
         }
         //middle node
         System.out.println("The middle node of the linked list:"+ l1.middleNode().data);
         //nth node from end of linked list
         System.out.println("4th value from the end of linked list:"+l1.nthFromEnd(4).data);
+        l1.delDuplicate();
+        l1.display();
     }
 }
