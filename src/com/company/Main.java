@@ -197,7 +197,7 @@ public class Main {
         l2.add(5);
         l2.add(6);
         l2.add(7);
-        int targetElem = 3;
+        int targetElem = 5;
         //initializing the answer to the index -1
         int ans = -1;
         for (int i =0; i < l2.size(); i++){
@@ -209,9 +209,9 @@ public class Main {
         }
         //check if the element is present in the linked list
         if(ans == -1){
-            System.out.println("Element not in linked list 2");
+            System.out.println("Element not in linked list");
         } else {
-            System.out.println("Element in linked list 2:" + ans);
+            System.out.println("Element in linked list:" + ans);
         }
     }
 }
