@@ -152,20 +152,26 @@ public class Main {
 
     public static void main(String[] args) {
         Main l1 = new Main();
-        l1.head = new ListNode(2);
+        l1.head = new ListNode(1);
         ListNode second = new ListNode(11);
         ListNode third = new ListNode(22);
         ListNode four = new ListNode(33);
         ListNode five = new ListNode(44);
+
         //connecting the nodes to create chain
         l1.head.next = second;// 1 -->11
         second.next =  third;//1-->11-->22
         third.next = four;//1-->11-->22-->33
         four.next = five;//1-->11-->22-->33-->44
         //insert into the head of the linked list
-        l1.insertFirst(1);
+        l1.insertFirst(0);
         //insert at the end of linked list
         l1.insertLast(77);
+        l1.insertLast(88);
+        l1.insertLast(99);
+        l1.insertLast(110);
+        l1.insertLast(121);
+        l1.insertLast(132);
         //insert at position 7
         l1.insertTarget(7, 55);
         //insert at position 8
@@ -173,13 +179,13 @@ public class Main {
         //print linked list
         l1.display();
         //get list length
-        //System.out.println("Length of linked list:"+ l1.listLength());
+        System.out.println("Length of linked list:"+ l1.listLength());
         //delete first node and check data
         System.out.println("data deleted from first Node:" + l1.deleteFirst().data);
         l1.display();
         System.out.println("data deleted from last Node:" + l1.deleteLast().data);
         l1.display();
-        System.out.println("data removed from targetNode:" + l1.deleteTarget(3));
+        System.out.println("data removed from targetNode:" + l1.deleteTarget(10));
         l1.display();
     }
 }
